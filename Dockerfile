@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && install -y php7.0 php7.0-cli php7.0-mcrypt php7.0-mysql nginx curl git subversion openssh openssl mercurial tini bash zlib-dev
+RUN apt-get update && apt-get -y dist-upgrade -y && apt-get -y autoremove && apt-get -y install php7.0 php7.0-cli php7.0-mcrypt php7.0-mysql nginx curl git subversion openssh openssl mercurial tini bash zlib-dev
 RUN service nginx restart
 
 RUN curl -s -f -L -o /tmp/installer.php https://raw.githubusercontent.com/composer/getcomposer.org/da290238de6d63faace0343efbdd5aa9354332c5/web/installer \
