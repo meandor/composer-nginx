@@ -5,7 +5,6 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf && chown -R www-data:www-data 
 COPY ./data/install-composer.sh .
 RUN ./install-composer.sh
 
-USER www-data
 WORKDIR /var/www/html
 
 CMD ["nginx"]
