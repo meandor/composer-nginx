@@ -14,10 +14,8 @@ COPY ./dist/default /etc/nginx/sites-available/default
 COPY ./dist/install-composer.sh .
 RUN ./install-composer.sh
 RUN rm -rf /var/www/html/index.nginx-debian.html
-USER www-data
-WORKDIR /var/www/html
 
-CMD ["nginx"]
+CMD service php7.0-fpm start && nginx
 
 EXPOSE 80
 EXPOSE 443
