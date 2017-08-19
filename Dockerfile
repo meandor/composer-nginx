@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt-get -y install php7.0 php7.0-cli php7.0-mcrypt php7.0-mysql nginx curl openssl wget git php7.0-curl php7.0-xml php7.0-intl php7.0-gd php7.0-mbstring php7.0-fpm ssl-cert unzip zip && \
     rm -rf /var/lib/apt/lists/*
 RUN chown -R www-data:www-data /var/lib/nginx
-RUN chown -R www-data:www-data /var/www/html && sudo chmod -R 0755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html && chmod -R 0755 /var/www/html
 
 COPY ./dist/php.ini /etc/php/7.0/fpm/php.ini
 RUN service php7.0-fpm restart
