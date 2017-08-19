@@ -6,11 +6,15 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 RUN chown -R www-data:www-data /var/lib/nginx
 
-COPY ./dist/install-composer.sh .
+COPY ./dist/php.ini /etc/php/7.0/fpm/php.ini
+RUN service php7.0-fpm restart
 COPY ./dist/nginx.conf /etc/nginx/nginx.conf
 COPY ./dist/default /etc/nginx/sites-available/default
+COPY ./dist/install-composer.sh .
 RUN ./install-composer.sh
 
+
+USER www-data
 WORKDIR /var/www/html
 
 CMD ["nginx"]
